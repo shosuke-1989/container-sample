@@ -2,8 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ECR_REPOSITORY: https://github.com/shosuke-1989/container-sample.git
-
+    ECR_REPOSITORY: 533206543844.dkr.ecr.ap-northeast-1.amazonaws.com/test-ecr
 phases:
   pre_build:
     commands:
