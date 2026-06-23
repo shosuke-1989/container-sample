@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ECR_REPOSITORY: 533206543844.dkr.ecr.ap-northeast-1.amazonaws.com/test-ecr
+    ECR_REPOSITORY: https://github.com/shosuke-1989/container-sample.git
 
 phases:
   pre_build:
@@ -12,8 +12,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t test-ecr .
-      - docker tag test-ecr:latest ${ECR_REPOSITORY}:latest
+      - docker build -t container-test-app .
+      - docker tag container-test-app:latest ${ECR_REPOSITORY}:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
@@ -23,7 +23,7 @@ phases:
       - |
         echo '[
           {
-            "name": "test-ecr",
+            "name": "container-test-app",
             "imageUri": "'${ECR_REPOSITORY}':latest"
           }
         ]' > imagedefinitions.json
